@@ -1,4 +1,4 @@
-# checkpoint-rag
+# Support RAG Assistant
 
 An internal support assistant for a Customer Success team, built with retrieval-augmented generation (RAG). It indexes a SaaS company's knowledge base (60 Markdown product docs, 25 PDF runbooks, 15 HTML resolved support tickets), retrieves the most relevant passages for a question using hybrid search (vector + BM25 keyword search), and has an LLM answer **only from those passages**. Every answer comes back as structured output with the answer, the source documents it used, and a confidence level. An evaluation harness scores the system on 50 test questions with ground-truth answers, so every design decision below is backed by a measurement.
 
@@ -165,8 +165,7 @@ One of its two expected sources, `runbooks/customer-ops/custom-sla-handling.pdf`
 ## How to run
 
 ```bash
-git clone <your-repo-url> && cd checkpoint-rag && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
-cp .env.example .env            # then add OPENAI_API_KEY and PINECONE_API_KEY
+git clone https://github.com/saftyy/Support-RAG-Assistant.git && cd Support-RAG-Assistant && python -m venv venv && source venv/bin/activate && pip install -r requirements.txtcp .env.example .env            # then add OPENAI_API_KEY and PINECONE_API_KEY
 python -m src.ingest --corpus ./corpus
 python -m src.pipeline "What's the maximum number of steps allowed in a single workflow?"
 python -m evals.harness
