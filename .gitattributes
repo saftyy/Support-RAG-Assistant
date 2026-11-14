@@ -1,2 +1,3 @@
 *.pdf binary
 corpus/** linguist-vendored
+corpus/** linguist-detectable=false 
